@@ -288,18 +288,6 @@ def sequence_tan(hyper_train_sub_ids, hyper_vali_sub_ids, test_sub_ids):
         new_train_lens = np.concatenate((train_lens, f, c), axis=0)
         new_train_subs = np.concatenate((train_subs, train_subs, train_subs), axis=0)
 
-        # revision
-        # reduce training data effects, training dataset decreased by 10%, 20%, 30%, 40%, 50%
-        # first, decreased by 20%
-        # length = len(new_train_data)
-        # indices = list(range(length))
-        # random.shuffle(indices)
-        # indices = indices[:int(length * 0.9)]
-        # new_train_data = new_train_data[indices]
-        # new_train_label = new_train_label[indices]
-        # new_train_lens = new_train_lens[indices]
-        # new_train_subs = new_train_subs[indices]
-
         new_train_data, valid_data, test_data = scale_data(new_train_data, valid_data, test_data)
         return new_train_data, new_train_label, new_train_lens, new_train_subs, valid_data, valid_label, valid_lens, valid_subs, test_data, test_label, test_lens, test_subs, max_length
     else:
